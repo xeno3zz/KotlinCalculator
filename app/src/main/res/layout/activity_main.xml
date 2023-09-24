@@ -127,10 +127,17 @@
 
         <Button
             style="@style/buttonNumber"
-            android:text="."/>
+            android:text="."
+            />
         <Button
             style="@style/buttonNumber"
             android:text="0"/>
+        <Button
+            style="@style/buttonNumber"
+            android:text="("/>
+        <Button
+            style="@style/buttonNumber"
+            android:text=")"/>
         <Button
             style="@style/buttonOperator"
             android:layout_weight="2"
