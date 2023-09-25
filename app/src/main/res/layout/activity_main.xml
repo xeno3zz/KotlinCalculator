@@ -82,7 +82,7 @@
         android:onClick="backSpaceAction"
         />
     <Button
-        style="@style/buttonOperator"
+        style="@style/buttonNumber"
         android:id="@+id/button3"
         android:text="."
         app:layout_constraintStart_toStartOf="@id/Flow"
@@ -175,14 +175,14 @@
         app:layout_constraintTop_toTopOf="@id/Flow"
         />
     <Button
-        style="@style/buttonNumber"
+        style="@style/buttonParenthesis"
         android:id="@+id/button19"
         android:text="("
         app:layout_constraintStart_toStartOf="@id/Flow"
         app:layout_constraintTop_toTopOf="@id/Flow"
         />
     <Button
-        style="@style/buttonNumber"
+        style="@style/buttonParenthesis"
         android:id="@+id/button20"
         android:text=")"
         app:layout_constraintStart_toStartOf="@id/Flow"

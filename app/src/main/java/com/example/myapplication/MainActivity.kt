@@ -14,7 +14,7 @@ private lateinit var binding: ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private var canAddOperation = false
     private var canAddDecimal = true
-
+    private var canAddParenthesis = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -31,14 +31,16 @@ class MainActivity : AppCompatActivity() {
             if(view.text=="."){
                 if(canAddDecimal)
                     WorkingsTV.append(view.text)
-
+                canAddParenthesis = false
                 canAddDecimal = false
+                canAddOperation = false
             }
 
             else {
                 WorkingsTV.append(view.text)
+                canAddParenthesis = false
                 canAddOperation = true
-                canAddDecimal = true
+
 
             }
 
@@ -53,8 +55,14 @@ class MainActivity : AppCompatActivity() {
         if(view is Button && canAddOperation){
             binding.WorkingsTV.append(view.text)
             canAddOperation = false
-            canAddDecimal = false
+            canAddDecimal = true
             //getting the text from whichever button pressed, adding to workings
+        }
+    }
+    fun parenthesisAction(view: View){
+        if(view is Button && canAddParenthesis){
+            binding.WorkingsTV.append(view.text)
+            canAddOperation = false
         }
     }
     fun allClearAction(view: View) {
@@ -66,6 +74,11 @@ class MainActivity : AppCompatActivity() {
         if(length>0){
             binding.WorkingsTV.text = binding.WorkingsTV.text.subSequence(0, length - 1)
         }
+
+        if(!canAddDecimal)
+            canAddDecimal = true
+        if(!canAddOperation)
+            canAddOperation = true
     }
     fun equalsAction(view: View) {
         binding.ResultsTV.text = calculateResults();
