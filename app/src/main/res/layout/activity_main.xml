@@ -42,7 +42,7 @@
         android:textAlignment="textEnd"
         android:textSize="45dp"
         android:textColor="@color/grey"
-        android:text=""
+
         />
 
 
@@ -50,7 +50,7 @@
         android:id="@+id/Flow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12, button13, button14, button15, button16, button18, button19, button20,button21"
+        app:constraint_referenced_ids="button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12, button13, button14, button15, button16, button19, button18, button20,button21"
         app:flow_horizontalStyle="spread"
         app:flow_maxElementsWrap="4"
         app:flow_wrapMode="chain"
@@ -168,21 +168,21 @@
         />
 
     <Button
-        style="@style/buttonOperator"
+        style="@style/buttonNumber"
         android:id="@+id/button18"
         android:text="0"
         app:layout_constraintStart_toStartOf="@id/Flow"
         app:layout_constraintTop_toTopOf="@id/Flow"
         />
     <Button
-        style="@style/buttonOperator"
+        style="@style/buttonNumber"
         android:id="@+id/button19"
         android:text="("
         app:layout_constraintStart_toStartOf="@id/Flow"
         app:layout_constraintTop_toTopOf="@id/Flow"
         />
     <Button
-        style="@style/buttonOperator"
+        style="@style/buttonNumber"
         android:id="@+id/button20"
         android:text=")"
         app:layout_constraintStart_toStartOf="@id/Flow"
