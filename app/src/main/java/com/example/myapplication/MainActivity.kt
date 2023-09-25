@@ -14,7 +14,7 @@ private lateinit var binding: ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private var canAddOperation = false
     private var canAddDecimal = true
-    private val highPriority = arrayOf('*', '/', '(', ')')
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -25,29 +25,41 @@ class MainActivity : AppCompatActivity() {
     fun numberAction(view: View){
         binding.apply {
             if(view is Button){
+//                if(binding.WorkingsTV.text.toString().last().isDigit()){
+//                    canAddDecimal = false
+//                }
             if(view.text=="."){
                 if(canAddDecimal)
                     WorkingsTV.append(view.text)
 
                 canAddDecimal = false
             }
-            else
-                WorkingsTV.append(view.text)
 
-            canAddOperation = true
+            else {
+                WorkingsTV.append(view.text)
+                canAddOperation = true
+                canAddDecimal = true
+
+            }
+
+
             //getting the text from whichever button pressed, adding to workings
         } }
     }
+
+
+
     fun operationAction(view: View){
         if(view is Button && canAddOperation){
             binding.WorkingsTV.append(view.text)
             canAddOperation = false
+            canAddDecimal = false
             //getting the text from whichever button pressed, adding to workings
         }
     }
     fun allClearAction(view: View) {
         binding.WorkingsTV.text=""
-        binding.ResultTV.text=""
+        binding.ResultsTV.text=""
     }
     fun backSpaceAction(view: View) {
         val length = binding.WorkingsTV.length();
@@ -56,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
     fun equalsAction(view: View) {
-        binding.ResultTV.text = calculateResults();
+        binding.ResultsTV.text = calculateResults();
     }
 
     private fun <T> MutableList<T>.removeLast(): T = if(isEmpty()) throw NoSuchElementException("List is empty.") else removeAt(lastIndex)
@@ -94,7 +106,7 @@ class MainActivity : AppCompatActivity() {
         return resultList.last()
     }
     private fun calculateResults(): String {
-        val digitsOperators = digitsOperators() 
+        val digitsOperators = digitsOperators()
         if(digitsOperators.isEmpty()) return ""
         val infixToPostfix = InfixToPostfix(digitsOperators)
         return evalRPN(infixToPostfix).toString()
