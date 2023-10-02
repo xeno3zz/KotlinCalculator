@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="buttonNumber">
 
+    <style name="buttonNumber">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@null</item>
@@ -27,7 +27,6 @@
         <item name="layout_constraintTop_toTopOf">@id/Flow</item>
         <item name="layout_constraintStart_toStartOf">@id/Flow</item>
         <item name="layout_constraintEnd_toEndOf">@id/Flow</item>
-
     </style>
 
     <style name="buttonParenthesis">

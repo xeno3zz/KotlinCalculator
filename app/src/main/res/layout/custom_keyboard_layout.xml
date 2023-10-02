@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.myapplication.ui.views.KeyboardView"
+    android:background="@color/black">
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/Flow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:flow_verticalGap="15dp"
+        app:constraint_referenced_ids="button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12, button13, button14, button15, button16, button19, button18, button20,button21"
+        app:flow_horizontalStyle="spread"
+        app:flow_maxElementsWrap="4"
+        app:flow_wrapMode="chain"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintBaseline_toBottomOf="parent"/>
+
+    <Button
+        style="@style/buttonNumber"
+        android:id="@+id/button1"
+        android:text="@string/clear"
+        android:backgroundTint="@color/red"
+        android:textColor="@color/black"
+        android:onClick="allClearAction"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow" />
+
+    <Button
+        android:text="@string/backspace"
+        style="@style/buttonOperator"
+        android:id="@+id/button2"
+        android:textColor="@color/green"
+        android:onClick="backSpaceAction"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow" />
+
+    <Button
+        style="@style/buttonNumber"
+        android:id="@+id/button3"
+        android:text="@string/dot"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow" />
+
+    <Button
+        style="@style/buttonOperator"
+        android:id="@+id/button4"
+        android:text="@string/divide"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow"/>
+
+    <Button
+        style="@style/buttonNumber"
+        android:id="@+id/button5"
+        android:text="@string/seven"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow"/>
+
+    <Button
+        style="@style/buttonNumber"
+        android:id="@+id/button6"
+        android:text="@string/eight"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow"/>
+
+    <Button
+        style="@style/buttonNumber"
+        android:id="@+id/button7"
+        android:text="@string/nine"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow"/>
+
+    <Button
+        style="@style/buttonOperator"
+        android:id="@+id/button8"
+        android:text="@string/multiply"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow"/>
+
+    <Button
+        style="@style/buttonNumber"
+        android:id="@+id/button9"
+        android:text="@string/four"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow"/>
+
+    <Button
+        style="@style/buttonNumber"
+        android:id="@+id/button10"
+        android:text="@string/five"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow"/>
+
+    <Button
+        style="@style/buttonNumber"
+        android:id="@+id/button11"
+        android:text="@string/six"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow"/>
+
+    <Button
+        style="@style/buttonOperator"
+        android:id="@+id/button12"
+        android:text="@string/minus"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow"/>
+
+    <Button
+        style="@style/buttonNumber"
+        android:id="@+id/button13"
+        android:text="@string/one"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow"/>
+
+    <Button
+        style="@style/buttonNumber"
+        android:id="@+id/button14"
+        android:text="@string/two"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow"/>
+
+    <Button
+        style="@style/buttonNumber"
+        android:id="@+id/button15"
+        android:text="@string/three"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow"/>
+
+    <Button
+        style="@style/buttonOperator"
+        android:id="@+id/button16"
+        android:text="@string/plus"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow" />
+
+    <Button
+        style="@style/buttonNumber"
+        android:id="@+id/button18"
+        android:text="@string/zero"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow" />
+
+    <Button
+        style="@style/buttonParenthesis"
+        android:id="@+id/button19"
+        android:text="@string/left_parenthesis"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow" />
+
+    <Button
+        style="@style/buttonParenthesis"
+        android:id="@+id/button20"
+        android:text="@string/right_parenthesis"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow" />
+
+    <Button
+        style="@style/buttonOperator"
+        android:id="@+id/button21"
+        android:text="@string/equals"
+        android:backgroundTint="@color/green"
+        android:textColor="@color/black"
+        android:onClick="equalsAction"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
