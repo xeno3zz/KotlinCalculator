@@ -1,15 +1,11 @@
 package com.example.myapplication.ui.views
 
 import android.content.Context
-import android.graphics.Canvas
-import android.inputmethodservice.Keyboard
 import android.util.AttributeSet
 import android.view.View
-import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.myapplication.R
 import com.example.myapplication.ui.model.KeyboardKey
-
 class KeyboardView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

@@ -1,34 +1,24 @@
 package com.example.myapplication
 
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.isDigitsOnly
-import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.ui.model.KeyboardKey
 import com.example.myapplication.ui.views.KeyboardView
-import org.w3c.dom.Text
-
-private lateinit var binding: ActivityMainBinding
-
 class MainActivity : AppCompatActivity() {
     private var canAddOperation = false
     private var canAddDecimal = true
     private var canAddParenthesis = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(R.layout.activity_main)
         val workingsTextView = findViewById<TextView>(R.id.WorkingsTV)
         val resultsTextView = findViewById<TextView>(R.id.ResultsTV)
         findViewById<KeyboardView>(R.id.keyboard_view).onKeyPressed = { key ->
             when(key){
                 KeyboardKey.KeyEquals -> {
-                    resultsTextView.text = calculateResults();
+                    resultsTextView.text = calculateResults()
                 }
                 KeyboardKey.KeyClear ->{
                     workingsTextView.text=""
@@ -37,7 +27,7 @@ class MainActivity : AppCompatActivity() {
                     canAddDecimal = true
                 }
                 KeyboardKey.KeyBackspace -> {
-                    val length = workingsTextView.length();
+                    val length = workingsTextView.length()
                     if(length>0){
                         workingsTextView.text = workingsTextView.text.subSequence(0, length - 1)
                     }
@@ -76,8 +66,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private fun <T> MutableList<T>.removeLast(): T = if(isEmpty()) throw NoSuchElementException("List is empty.") else removeAt(lastIndex)
-    fun evalRPN(tokens: MutableList<Any>):Float {
-        val resultList = mutableListOf<Float>() //выходной лист
+    private fun evalRPN(tokens: MutableList<Any>):Float {
+        val resultList = mutableListOf<Float>()
         for(token in tokens){
             resultList.add(
                 when(token) {
@@ -93,14 +83,14 @@ class MainActivity : AppCompatActivity() {
                     }
                     KeyboardKey.KeyMinus.keyValue -> {
                         val prev = resultList.removeLast()
-                        val dprev = resultList.removeLast()
-                        dprev - prev
+                        val dPrev = resultList.removeLast()
+                        dPrev - prev
 
                     }
                     KeyboardKey.KeyDivide.keyValue -> {
                         val prev = resultList.removeLast()
-                        val dprev = resultList.removeLast()
-                        dprev / prev
+                        val dPrev = resultList.removeLast()
+                        dPrev / prev
                     }
                     else -> token.toString().toFloat()
                 }
@@ -111,14 +101,14 @@ class MainActivity : AppCompatActivity() {
     private fun calculateResults(): String {
         val digitsOperators = digitsOperators()
         if(digitsOperators.isEmpty()) return ""
-        val infixToPostfix = InfixToPostfix(digitsOperators)
+        val infixToPostfix = infixToPostfix(digitsOperators)
         return evalRPN(infixToPostfix).toString()
     }
     private fun digitsOperators(): MutableList<Any>{
         val list = mutableListOf<Any>()
+        val workingsTV = findViewById<TextView>(R.id.WorkingsTV)
         var currentDigit = ""
-        for (character in binding.WorkingsTV.text){
-            //
+        for (character in workingsTV.text){
             if(character.isDigit() || character == KeyboardKey.KeyDot.keyValue){
                 currentDigit+= character
             }
@@ -147,10 +137,10 @@ class MainActivity : AppCompatActivity() {
         }
         return -1
     }
-    private fun InfixToPostfix(passedList: MutableList<Any>): MutableList<Any>{
+    private fun infixToPostfix(passedList: MutableList<Any>): MutableList<Any>{
         val resultList = mutableListOf<Any>()
-        var stackList = ArrayDeque<Any>()
-        var token = ""
+        val stackList = ArrayDeque<Any>()
+//        var token = ""
         for (token in passedList){
             if(token.toString().isDigitsOnly() || token.toString().contains(KeyboardKey.KeyDot.keyValue)){
                 resultList.add(token)
