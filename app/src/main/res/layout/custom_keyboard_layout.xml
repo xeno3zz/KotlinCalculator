@@ -10,10 +10,10 @@
     <androidx.constraintlayout.helper.widget.Flow
         android:id="@+id/Flow"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginBottom="16dp"
-        app:flow_verticalGap="15dp"
-        app:constraint_referenced_ids="button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12, button13, button14, button15, button16, button19, button18, button20,button21"
+
+        app:constraint_referenced_ids="button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12, button_13, button_14, button_15, button16, button17, button18, button19,button20"
         app:flow_horizontalStyle="spread"
         app:flow_maxElementsWrap="4"
         app:flow_wrapMode="chain"
@@ -98,7 +98,7 @@
         android:id="@+id/button10"
         android:text="@string/five"
         app:layout_constraintStart_toStartOf="@id/Flow"
-        app:layout_constraintTop_toTopOf="@id/Flow"/>
+        app:layout_constraintTop_toTopOf="@id/Flow" />
 
     <Button
         style="@style/buttonNumber"
@@ -116,21 +116,21 @@
 
     <Button
         style="@style/buttonNumber"
-        android:id="@+id/button13"
+        android:id="@+id/button_13"
         android:text="@string/one"
         app:layout_constraintStart_toStartOf="@id/Flow"
         app:layout_constraintTop_toTopOf="@id/Flow"/>
 
     <Button
         style="@style/buttonNumber"
-        android:id="@+id/button14"
+        android:id="@+id/button_14"
         android:text="@string/two"
         app:layout_constraintStart_toStartOf="@id/Flow"
         app:layout_constraintTop_toTopOf="@id/Flow"/>
 
     <Button
         style="@style/buttonNumber"
-        android:id="@+id/button15"
+        android:id="@+id/button_15"
         android:text="@string/three"
         app:layout_constraintStart_toStartOf="@id/Flow"
         app:layout_constraintTop_toTopOf="@id/Flow"/>
@@ -139,6 +139,13 @@
         style="@style/buttonOperator"
         android:id="@+id/button16"
         android:text="@string/plus"
+        app:layout_constraintStart_toStartOf="@id/Flow"
+        app:layout_constraintTop_toTopOf="@id/Flow" />
+
+    <Button
+        style="@style/buttonParenthesis"
+        android:id="@+id/button17"
+        android:text="@string/left_parenthesis"
         app:layout_constraintStart_toStartOf="@id/Flow"
         app:layout_constraintTop_toTopOf="@id/Flow" />
 
@@ -152,20 +159,13 @@
     <Button
         style="@style/buttonParenthesis"
         android:id="@+id/button19"
-        android:text="@string/left_parenthesis"
-        app:layout_constraintStart_toStartOf="@id/Flow"
-        app:layout_constraintTop_toTopOf="@id/Flow" />
-
-    <Button
-        style="@style/buttonParenthesis"
-        android:id="@+id/button20"
         android:text="@string/right_parenthesis"
         app:layout_constraintStart_toStartOf="@id/Flow"
         app:layout_constraintTop_toTopOf="@id/Flow" />
 
     <Button
         style="@style/buttonOperator"
-        android:id="@+id/button21"
+        android:id="@+id/button20"
         android:text="@string/equals"
         android:backgroundTint="@color/green"
         android:textColor="@color/black"

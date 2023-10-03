@@ -1,84 +1,79 @@
 package com.example.myapplication
 
-import android.app.Activity
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Layout
-import android.view.LayoutInflater
+import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.isDigitsOnly
 import com.example.myapplication.databinding.ActivityMainBinding
-import com.example.myapplication.databinding.CustomKeyboardLayoutBinding.bind
-import com.example.myapplication.ui.views.KeyboardKey
+import com.example.myapplication.ui.model.KeyboardKey
 import com.example.myapplication.ui.views.KeyboardView
+import org.w3c.dom.Text
 
 private lateinit var binding: ActivityMainBinding
-//private val keyboardView:KeyboardView by bind<KeyboardView>(R.id.keyboardView)
+
 class MainActivity : AppCompatActivity() {
     private var canAddOperation = false
     private var canAddDecimal = true
     private var canAddParenthesis = true
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-    }
-    fun operationAction(view: View){
-        if(view is Button && canAddOperation){
-            com.example.myapplication.binding.WorkingsTV.append(view.text)
-            canAddOperation = false
-            canAddDecimal = true
-            //getting the text from whichever button pressed, adding to workings
-        }
-    }
-    fun numberAction(view: View){
-        binding.apply {
-
-            if(view is Button){
-                if(view.text==KeyboardKey.KeyDot.keyValue.toString()){
+        val workingsTextView = findViewById<TextView>(R.id.WorkingsTV)
+        val resultsTextView = findViewById<TextView>(R.id.ResultsTV)
+        findViewById<KeyboardView>(R.id.keyboard_view).onKeyPressed = { key ->
+            when(key){
+                KeyboardKey.KeyEquals -> {
+                    resultsTextView.text = calculateResults();
+                }
+                KeyboardKey.KeyClear ->{
+                    workingsTextView.text=""
+                    resultsTextView.text=""
+                    canAddParenthesis = true
+                    canAddDecimal = true
+                }
+                KeyboardKey.KeyBackspace -> {
+                    val length = workingsTextView.length();
+                    if(length>0){
+                        workingsTextView.text = workingsTextView.text.subSequence(0, length - 1)
+                    }
+                    if(!canAddDecimal)
+                        canAddDecimal = true
+                    if(!canAddOperation)
+                        canAddOperation = true
+                }
+                KeyboardKey.KeyPlus, KeyboardKey.KeyMinus, KeyboardKey.KeyDivide, KeyboardKey.KeyMultiply -> {
+                    if(canAddOperation){
+                        workingsTextView.append("${key.keyValue}")
+                        canAddOperation = false
+                        canAddDecimal = true
+                        //getting the text from whichever button pressed, adding to workings
+                    }
+                }
+                KeyboardKey.KeyDot -> {
                     if(canAddDecimal)
-                        WorkingsTV.append(view.text)
+                        workingsTextView.append("${key.keyValue}")
                     canAddParenthesis = false
                     canAddDecimal = false
                     canAddOperation = false
                 }
-
-                else {
-                    WorkingsTV.append(view.text)
+                KeyboardKey.KeyLeftP, KeyboardKey.KeyRightP -> {
+                    if(canAddParenthesis) {
+                        workingsTextView.append("${key.keyValue}")
+                    }
+                }
+                else -> {
+                    workingsTextView.append("${key.keyValue}")
                     canAddOperation = true
+                    canAddParenthesis = true
                 }
 
-            } }
-    }
-
-    fun parenthesisAction(view: View){
-        if(view is Button && canAddParenthesis){
-            binding.WorkingsTV.append(view.text)
-
+            }
         }
-    }
-    fun allClearAction(view: View) {
-        binding.WorkingsTV.text=""
-        binding.ResultsTV.text=""
-        canAddParenthesis = true
-        canAddDecimal = true
-    }
-    fun backSpaceAction(view: View) {
-        val length = binding.WorkingsTV.length();
-        if(length>0){
-            binding.WorkingsTV.text = binding.WorkingsTV.text.subSequence(0, length - 1)
-        }
-
-        if(!canAddDecimal)
-            canAddDecimal = true
-        if(!canAddOperation)
-            canAddOperation = true
-    }
-    fun equalsAction(view: View) {
-        binding.ResultsTV.text = calculateResults();
     }
     private fun <T> MutableList<T>.removeLast(): T = if(isEmpty()) throw NoSuchElementException("List is empty.") else removeAt(lastIndex)
     fun evalRPN(tokens: MutableList<Any>):Float {
