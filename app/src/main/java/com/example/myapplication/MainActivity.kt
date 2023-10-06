@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity() {
                         workingsTextView.append("${key.keyValue}")
                         canAddOperation = false
                         canAddDecimal = true
-                        //getting the text from whichever button pressed, adding to workings
                     }
                 }
                 KeyboardKey.KeyDot -> {
