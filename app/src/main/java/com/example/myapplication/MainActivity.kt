@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity() {
 
                     }
                     KeyboardKey.KeyMinus.keyValue -> {
+
                         val prev = resultList.removeLast()
                         val dPrev = resultList.removeLast()
                         dPrev - prev
@@ -91,6 +92,7 @@ class MainActivity : AppCompatActivity() {
                         val dPrev = resultList.removeLast()
                         dPrev / prev
                     }
+
                     else -> token.toString().toFloat()
                 }
             )
@@ -112,12 +114,17 @@ class MainActivity : AppCompatActivity() {
                 currentDigit+= character
             }
             else{
-                if(currentDigit.isNotEmpty()){
+                if(currentDigit.isNotEmpty()) {
                     list.add(currentDigit.toFloat())
                     currentDigit = ""
                     list.add(character)
                 }
-                else{
+                else if (character == KeyboardKey.KeyMinus.keyValue) {
+                        list.add(0.0)
+                        currentDigit = ""
+                        list.add(character)
+                }
+                else {
                     list.add(character)
                 }
             }
@@ -141,7 +148,7 @@ class MainActivity : AppCompatActivity() {
         val stackList = ArrayDeque<Any>()
 //        var token = ""
         for (token in passedList){
-            if(token.toString().isDigitsOnly() || token.toString().contains(KeyboardKey.KeyDot.keyValue)){
+            if(token.toString().isDigitsOnly() || token.toString().contains(KeyboardKey.KeyDot.keyValue) ){
                 resultList.add(token)
             }
             if(token == KeyboardKey.KeyPlus.keyValue || token == KeyboardKey.KeyMinus.keyValue || token == KeyboardKey.KeyMultiply.keyValue || token == KeyboardKey.KeyDivide.keyValue || token == KeyboardKey.KeyLeftP.keyValue){

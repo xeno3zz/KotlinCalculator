@@ -11,9 +11,9 @@ class KeyboardView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
-    private val button1 by lazy { findViewById<View>(R.id.button_13) }
-    private val button2 by lazy { findViewById<View>(R.id.button_14) }
-    private val button3 by lazy { findViewById<View>(R.id.button_15) }
+    private val button1 by lazy {findViewById<View>(R.id.button_13)}
+    private val button2 by lazy {findViewById<View>(R.id.button_14)}
+    private val button3 by lazy {findViewById<View>(R.id.button_15)}
     private val button4 by lazy {findViewById<View>(R.id.button9)}
     private val button5 by lazy {findViewById<View>(R.id.button10)}
     private val button6 by lazy {findViewById<View>(R.id.button11)}
