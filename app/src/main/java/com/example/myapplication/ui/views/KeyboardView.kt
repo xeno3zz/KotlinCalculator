@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.myapplication.R
-import com.example.myapplication.ui.model.KeyboardKey
+import com.example.domain.model.KeyboardKey
 class KeyboardView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -31,31 +31,31 @@ class KeyboardView @JvmOverloads constructor(
     private val buttonEquals by lazy {findViewById<View>(R.id.button20)}
     private val buttonLeftP by lazy {findViewById<View>(R.id.button17)}
     private val buttonRightP by lazy {findViewById<View>(R.id.button19)}
-    var onKeyPressed: (KeyboardKey) -> Unit = {}
+    var onKeyPressed: (com.example.domain.model.KeyboardKey) -> Unit = {}
     init {
         inflate(context, R.layout.custom_keyboard_layout, this)
     }
     override fun onFinishInflate() {
         super.onFinishInflate()
-        button1.setOnClickListener { onKeyPressed.invoke(KeyboardKey.Key1) }
-        button2.setOnClickListener { onKeyPressed(KeyboardKey.Key2) }
-        button3.setOnClickListener { onKeyPressed(KeyboardKey.Key3) }
-        button4.setOnClickListener { onKeyPressed(KeyboardKey.Key4) }
-        button5.setOnClickListener { onKeyPressed(KeyboardKey.Key5) }
-        button6.setOnClickListener{ onKeyPressed(KeyboardKey.Key6) }
-        button7.setOnClickListener{ onKeyPressed(KeyboardKey.Key7) }
-        button8.setOnClickListener{ onKeyPressed(KeyboardKey.Key8) }
-        button9.setOnClickListener{ onKeyPressed(KeyboardKey.Key9) }
-        button0.setOnClickListener{ onKeyPressed(KeyboardKey.Key0) }
-        buttonClear.setOnClickListener{ onKeyPressed(KeyboardKey.KeyClear) }
-        buttonBackSpace.setOnClickListener{ onKeyPressed(KeyboardKey.KeyBackspace) }
-        buttonDot.setOnClickListener { onKeyPressed(KeyboardKey.KeyDot) }
-        buttonDivide.setOnClickListener { onKeyPressed(KeyboardKey.KeyDivide) }
-        buttonMultiply.setOnClickListener { onKeyPressed(KeyboardKey.KeyMultiply) }
-        buttonMinus.setOnClickListener { onKeyPressed(KeyboardKey.KeyMinus) }
-        buttonPlus.setOnClickListener { onKeyPressed(KeyboardKey.KeyPlus) }
-        buttonLeftP.setOnClickListener { onKeyPressed(KeyboardKey.KeyLeftP) }
-        buttonRightP.setOnClickListener { onKeyPressed(KeyboardKey.KeyRightP) }
-        buttonEquals.setOnClickListener { onKeyPressed(KeyboardKey.KeyEquals) }
+        button1.setOnClickListener { onKeyPressed.invoke(com.example.domain.model.KeyboardKey.Key1) }
+        button2.setOnClickListener { onKeyPressed(com.example.domain.model.KeyboardKey.Key2) }
+        button3.setOnClickListener { onKeyPressed(com.example.domain.model.KeyboardKey.Key3) }
+        button4.setOnClickListener { onKeyPressed(com.example.domain.model.KeyboardKey.Key4) }
+        button5.setOnClickListener { onKeyPressed(com.example.domain.model.KeyboardKey.Key5) }
+        button6.setOnClickListener{ onKeyPressed(com.example.domain.model.KeyboardKey.Key6) }
+        button7.setOnClickListener{ onKeyPressed(com.example.domain.model.KeyboardKey.Key7) }
+        button8.setOnClickListener{ onKeyPressed(com.example.domain.model.KeyboardKey.Key8) }
+        button9.setOnClickListener{ onKeyPressed(com.example.domain.model.KeyboardKey.Key9) }
+        button0.setOnClickListener{ onKeyPressed(com.example.domain.model.KeyboardKey.Key0) }
+        buttonClear.setOnClickListener{ onKeyPressed(com.example.domain.model.KeyboardKey.KeyClear) }
+        buttonBackSpace.setOnClickListener{ onKeyPressed(com.example.domain.model.KeyboardKey.KeyBackspace) }
+        buttonDot.setOnClickListener { onKeyPressed(com.example.domain.model.KeyboardKey.KeyDot) }
+        buttonDivide.setOnClickListener { onKeyPressed(com.example.domain.model.KeyboardKey.KeyDivide) }
+        buttonMultiply.setOnClickListener { onKeyPressed(com.example.domain.model.KeyboardKey.KeyMultiply) }
+        buttonMinus.setOnClickListener { onKeyPressed(com.example.domain.model.KeyboardKey.KeyMinus) }
+        buttonPlus.setOnClickListener { onKeyPressed(com.example.domain.model.KeyboardKey.KeyPlus) }
+        buttonLeftP.setOnClickListener { onKeyPressed(com.example.domain.model.KeyboardKey.KeyLeftP) }
+        buttonRightP.setOnClickListener { onKeyPressed(com.example.domain.model.KeyboardKey.KeyRightP) }
+        buttonEquals.setOnClickListener { onKeyPressed(com.example.domain.model.KeyboardKey.KeyEquals) }
     }
 }

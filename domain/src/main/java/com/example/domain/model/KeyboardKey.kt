@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.model
+package com.example.domain.model
 
 enum class KeyboardKey(var keyValue: Char){
     KeyDot('.'),
