@@ -37,7 +37,7 @@ class KeyboardView @JvmOverloads constructor(
     }
     override fun onFinishInflate() {
         super.onFinishInflate()
-        button1.setOnClickListener { onKeyPressed.invoke(com.example.domain.model.KeyboardKey.Key1) }
+        button1.setOnClickListener { onKeyPressed(com.example.domain.model.KeyboardKey.Key1) }
         button2.setOnClickListener { onKeyPressed(com.example.domain.model.KeyboardKey.Key2) }
         button3.setOnClickListener { onKeyPressed(com.example.domain.model.KeyboardKey.Key3) }
         button4.setOnClickListener { onKeyPressed(com.example.domain.model.KeyboardKey.Key4) }
